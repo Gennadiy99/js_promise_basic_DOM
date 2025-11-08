@@ -5,16 +5,12 @@ const divResolve = document.createElement('div');
 
 const prom1 = new Promise((resolve, reject) => {
   logoMate.addEventListener('click', () => {
-    resolve('Promise was solved!');
+    resolve('Promise was resolved!');
   });
-
-  setTimeout(reject, 5000, 'Promise was denied!');
 });
 
 prom1.then((respons) => {
   if (respons) {
-    // const divResolve = document.createElement('div');
-
     divResolve.innerHTML = respons;
     divResolve.classList.add('message');
 
@@ -22,9 +18,11 @@ prom1.then((respons) => {
   }
 });
 
-prom1.catch((error) => {
-  // const divResolve = document.createElement('div');
+const prom2 = new Promise((resolve, reject) => {
+  setTimeout(reject, 3000, 'Promise was rejected!');
+});
 
+prom2.catch((error) => {
   divResolve.innerHTML = error;
   divResolve.classList.add('message', 'error-message');
 
