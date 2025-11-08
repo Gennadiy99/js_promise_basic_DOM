@@ -8,22 +8,24 @@ const prom1 = new Promise((resolve, reject) => {
   });
 });
 
-prom1.then((respons) => {
-  if (respons) {
-    const divResolve = document.createElement('div');
+prom1
+  .then((respons) => {
+    if (respons) {
+      const divResolve = document.createElement('div');
 
-    divResolve.innerHTML = respons;
-    divResolve.classList.add('message');
+      divResolve.innerHTML = respons;
+      divResolve.classList.add('message');
 
-    document.body.append(divResolve);
-  }
-});
+      document.body.append(divResolve);
+    }
+  })
+  .catch();
 
 const prom2 = new Promise((resolve, reject) => {
   setTimeout(reject, 3000, 'Promise was rejected!');
 });
 
-prom2.catch((error) => {
+prom2.then().catch((error) => {
   const divError = document.createElement('div');
 
   divError.innerHTML = error;
